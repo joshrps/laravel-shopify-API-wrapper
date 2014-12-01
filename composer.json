@@ -1,0 +1,20 @@
+{
+    "name": "rocket-code/shopify",
+    "description": "",
+    "authors": [
+        {
+            "name": "Rocket Code",
+            "email": "josh@rocketcode.io"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~4"
+    },
+    "autoload": {
+        "psr-0": {
+            "RocketCode\\Shopify": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
