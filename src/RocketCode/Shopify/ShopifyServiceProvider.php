@@ -11,7 +11,7 @@ class ShopifyServiceProvider extends ServiceProvider
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = TRUE;
 
 	/**
 	 * Register the service provider.
@@ -39,7 +39,7 @@ class ShopifyServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return array();
+		return ['ShopifyAPI', 'RocketCode\Shopify\API'];
 	}
 
 }
