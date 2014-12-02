@@ -231,7 +231,7 @@ class API
             CURLOPT_RETURNTRANSFER  => TRUE,
             CURLOPT_URL             => $url,
             CURLOPT_HTTPHEADER      => $headers,
-            CURLOPT_CUSTOMREQUEST   => $request['METHOD'],
+            CURLOPT_CUSTOMREQUEST   => strtoupper($request['METHOD']),
             CURLOPT_ENCODING        => '',
             CURLOPT_USERAGENT       => 'RocketCode Shopify API',
             CURLOPT_FAILONERROR     => TRUE
