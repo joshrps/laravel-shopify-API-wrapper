@@ -20,7 +20,10 @@ class ShopifyServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('ShopifyAPI', function($app, $config = array())
+		{
+			return new API($config);
+		});
 	}
 
     public function boot()
