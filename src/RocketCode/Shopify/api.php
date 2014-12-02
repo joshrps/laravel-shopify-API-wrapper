@@ -58,16 +58,22 @@ class API
 			}
 		}
 
-		$signature = $da['signature'];
-		unset($da['signature']);
-		ksort($da);
+		if (array_key_exists('hmac', $da))
+		{
+			// HMAC Validation
+			$queryString = http_build_query(array('code' => $da['code'], 'shop' => $da['shop'], 'timestamp' => $da['timestamp']));
+			$match = $da['hmac'];
+			$calculated = hash_hmac('sha256', $queryString, $this->_API['API_SECRET']);
+		}
+		else
+		{
+			// MD5 Validation, to be removed June 1st, 2015
+			$queryString = http_build_query(array('code' => $da['code'], 'shop' => $da['shop'], 'timestamp' => $da['timestamp']), NULL, '');
+			$match = $da['signature'];
+			$calculated = md5($this->_API['API_SECRET'] . $queryString);
+		}
 
-
-		$queryString = http_build_query($da, NULL, '');
-
-		$calculated = md5($this->_API['API_SECRET'] . $queryString);
-
-		return $calculated === $signature;
+		return $calculated === $match;
 	}
 
 	/**
