@@ -186,6 +186,7 @@ class API
 	    }
 
 	    $defaults = array(
+		    'CHARSET'       => 'UTF-8',
 		    'METHOD'        => 'GET',
 		    'URL'           => '/',
 			'HEADERS'       => array(),
@@ -206,7 +207,7 @@ class API
 
 	    // Send & accept JSON data
 	    $defaultHeaders = array();
-	    $defaultHeaders[] = 'Content-Type: application/json; charset=UTF-8';
+	    $defaultHeaders[] = 'Content-Type: application/json; charset=' . $request['CHARSET'];
 	    $defaultHeaders[] = 'Accept: application/json;';
 	    if (array_key_exists('ACCESS_TOKEN', $this->_API))
 	    {
