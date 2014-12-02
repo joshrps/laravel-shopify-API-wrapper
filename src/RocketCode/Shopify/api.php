@@ -87,7 +87,7 @@ class API
 	public function installURL($data = array())
 	{
 		// https://{shop}.myshopify.com/admin/oauth/authorize?client_id={api_key}&scope={scopes}&redirect_uri={redirect_uri}
-		return 'https://' . $this->_API['SHOP_DOMAIN'] . '/admin/oauth/authorize?client_id=' . $this->_API['API_KEY'] . '&scope=' . implode(',', $data['permissions']) . (!empty($data['redirect']) ? '&redirect_uri=' . $data['redirect'] : '');
+		return 'https://' . $this->_API['SHOP_DOMAIN'] . '/admin/oauth/authorize?client_id=' . $this->_API['API_KEY'] . '&scope=' . implode(',', $data['permissions']) . (!empty($data['redirect']) ? '&redirect_uri=' . urlencode($data['redirect']) : '');
 	}
 
 	/**
