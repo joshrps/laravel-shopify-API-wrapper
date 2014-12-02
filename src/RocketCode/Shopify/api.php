@@ -263,13 +263,13 @@ class API
 
 	    $result = json_decode(curl_exec($ch), $request['RETURNARRAY']);
 	    $_INFO = curl_getinfo($ch);
-	    $_ERROR = array('number' => curl_errno($ch), 'error' => curl_error($ch));
+	    $_ERROR = array('NUMBER' => curl_errno($ch), 'MESSAGE' => curl_error($ch));
 
         curl_close($ch);
 
-	    if ($_ERROR['number'])
+	    if ($_ERROR['NUMBER'])
 	    {
-		    throw new \Exception('ERROR #' . $_ERROR['number'] . ': ' . $_ERROR['error']);
+		    throw new \Exception('ERROR #' . $_ERROR['NUMBER'] . ': ' . $_ERROR['MESSAGE']);
 	    }
 
 
