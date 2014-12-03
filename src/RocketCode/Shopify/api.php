@@ -213,11 +213,12 @@ class API
 
 	    // Send & accept JSON data
 	    $defaultHeaders = array();
-	    $defaultHeaders[] = 'Content-Type: application/json; charset=' . $request['CHARSET'];
+	    $defaultHeaders[] = 'Content-Type: application/json;';
+	    $defaultHeaders[] = 'charset=' . $request['CHARSET'] . ';';
 	    $defaultHeaders[] = 'Accept: application/json;';
 	    if (array_key_exists('ACCESS_TOKEN', $this->_API))
 	    {
-		    $defaultHeaders[] = 'X-Shopify-Access-Token: ' . $this->_API['ACCESS_TOKEN'];
+		    $defaultHeaders[] = 'X-Shopify-Access-Token: ' . $this->_API['ACCESS_TOKEN'] . ';';
 	    }
 
         $headers = array_merge($defaultHeaders, $request['HEADERS']);
