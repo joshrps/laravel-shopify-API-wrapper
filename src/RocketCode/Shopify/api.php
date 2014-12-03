@@ -46,7 +46,7 @@ class API
 		}
 		else
 		{
-			throw new \Exception('Data passed to verifyRequest() needs to be an array or URL-encoded string of key/value.');
+			throw new \Exception('Data passed to verifyRequest() needs to be an array or URL-encoded string of key/value pairs.');
 		}
 
 		// Timestamp check; 1 hour tolerance
