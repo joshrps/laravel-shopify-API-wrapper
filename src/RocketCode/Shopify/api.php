@@ -218,8 +218,7 @@ class API
 
 	    // Send & accept JSON data
 	    $defaultHeaders = array();
-	    $defaultHeaders[] = 'Content-Type: application/json;';
-	    $defaultHeaders[] = 'charset=' . $request['CHARSET'] . ';';
+	    $defaultHeaders[] = 'Content-Type: application/json; charset=' . $request['CHARSET'] . ';';
 	    $defaultHeaders[] = 'Accept: application/json;';
 	    if (array_key_exists('ACCESS_TOKEN', $this->_API))
 	    {
@@ -247,7 +246,7 @@ class API
             CURLOPT_CUSTOMREQUEST   => strtoupper($request['METHOD']),
             CURLOPT_ENCODING        => '',
             CURLOPT_USERAGENT       => 'RocketCode Shopify API Wrapper',
-            CURLOPT_FAILONERROR     => TRUE
+            CURLOPT_FAILONERROR     => FALSE
         );
 
 	    // Checks if DATA is being sent
