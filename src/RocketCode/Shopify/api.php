@@ -90,6 +90,11 @@ class API
 		return $data->access_token;
 	}
 
+	/**
+	 * Returns a string of the install URL for the app
+	 * @param array $data
+	 * @return string
+	 */
 	public function installURL($data = array())
 	{
 		// https://{shop}.myshopify.com/admin/oauth/authorize?client_id={api_key}&scope={scopes}&redirect_uri={redirect_uri}
