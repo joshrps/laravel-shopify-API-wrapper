@@ -202,6 +202,7 @@ class API
 		    'URL'           => '/',
 			'HEADERS'       => array(),
 	        'DATA'          => array(),
+	        'FAILONERROR'   => TRUE,
 	        'RETURNARRAY'   => FALSE,
 	        'ALLDATA'       => FALSE
 	    );
@@ -246,7 +247,7 @@ class API
             CURLOPT_CUSTOMREQUEST   => strtoupper($request['METHOD']),
             CURLOPT_ENCODING        => '',
             CURLOPT_USERAGENT       => 'RocketCode Shopify API Wrapper',
-            CURLOPT_FAILONERROR     => FALSE
+            CURLOPT_FAILONERROR     => $request['FAILONERROR']
         );
 
 	    // Checks if DATA is being sent
