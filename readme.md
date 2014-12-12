@@ -28,7 +28,7 @@ $sh = App::make('ShopifyAPI');
 Simply pass an array with the following keys (and filled-in values) to prepare. Not all values need to be passed at once; you can call the `setup()` method as many times as you'd like; it will only accept the following 4 keys, and overwrite a values if it's already set.
 
 ```
-$sh->setup(['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TOKEN'' => '']);
+$sh->setup(['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TOKEN' => '']);
 ```
 #####Shortcut:
 Pass the setup array as the second argument in `App::make()`:
