@@ -34,7 +34,7 @@ $sh->setup(['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TO
 Pass the setup array as the second argument in `App::make()`:
 
 ```
-$sh = App::make('ShopifyAPI', ['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TOKEN'' => '']);
+$sh = App::make('ShopifyAPI', ['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TOKEN' => '']);
 ```
 
 That's it! You're ready to make some API calls.
