@@ -274,9 +274,12 @@ class API
 
         curl_setopt_array($ch, $options);
 
-	    $result = json_decode(curl_exec($ch), $request['RETURNARRAY']);
-	    $_INFO = curl_getinfo($ch);
-	    $_ERROR = array('NUMBER' => curl_errno($ch), 'MESSAGE' => curl_error($ch));
+        $response = curl_exec($ch);
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+
+        $result = json_decode(substr($response, $headerSize), $request['RETURNARRAY']);
+        $_INFO = array_filter(array_map('trim', explode("\n", substr($response, 0, $headerSize))));
+        $_ERROR = array('NUMBER' => curl_errno($ch), 'MESSAGE' => curl_error($ch));
 
         curl_close($ch);
 
