@@ -279,8 +279,27 @@ class API
         $response = curl_exec($ch);
         $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
 
+
+        // Data returned
         $result = json_decode(substr($response, $headerSize), $request['RETURNARRAY']);
-        $_INFO = array_filter(array_map('trim', explode("\n", substr($response, 0, $headerSize))));
+
+        // Headers
+        $info = array_filter(array_map('trim', explode("\n", substr($response, 0, $headerSize))));
+
+        foreach($info as $k => $header)
+        {
+            if ($k === 0)
+            {
+                $_INFO['HTTP_CODE'] = $header;
+                continue;
+            }
+
+            list($key, $val) = explode(':', $header);
+            $_INFO[trim($key)] = trim($val);
+        }
+
+
+        // cURL Errors
         $_ERROR = array('NUMBER' => curl_errno($ch), 'MESSAGE' => curl_error($ch));
 
         curl_close($ch);
