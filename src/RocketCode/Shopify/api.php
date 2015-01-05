@@ -288,8 +288,8 @@ class API
 
         foreach($info as $k => $header)
         {
-            if ($k === 0)
-            {
+	        if (strpos($header, 'HTTP/') > -1)
+	        {
                 $_INFO['HTTP_CODE'] = $header;
                 continue;
             }
