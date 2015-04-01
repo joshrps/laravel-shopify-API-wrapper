@@ -28,7 +28,6 @@ class ShopifyServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->package('RocketCode/Shopify');
         AliasLoader::getInstance()->alias('ShopifyAPI', 'RocketCode\Shopify\API');
     }
 
