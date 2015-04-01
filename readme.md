@@ -8,7 +8,7 @@ An easy-to-use PHP package to communicate with [Shopify's API](http://docs.shopi
 
 Add `"rocket-code/shopify"` in your "require" object. With a blank Laravel install, it will look something like this:
 
-For Laravel 5.*, use `"rocket-code/shopify": "~2.0"`. For Laravel 4.*, use `"rocket-code/shopify": "~1.0"`.
+For Laravel 5, use `"rocket-code/shopify": "~2.0"`. For Laravel 4, use `"rocket-code/shopify": "~1.0"`.
 
 ```
 	"require": {
