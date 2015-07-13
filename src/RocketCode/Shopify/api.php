@@ -248,8 +248,8 @@ class API
             CURLOPT_ENCODING        => '',
             CURLOPT_USERAGENT       => 'RocketCode Shopify API Wrapper',
             CURLOPT_FAILONERROR     => $request['FAILONERROR'],
-            CURLOPT_VERBOSE => 1,
-            CURLOPT_HEADER => 1
+            CURLOPT_VERBOSE         => $request['ALLDATA'],
+            CURLOPT_HEADER          => 1
         );
 
 	    // Checks if DATA is being sent
