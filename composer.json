@@ -1,16 +1,11 @@
 {
     "name": "joox/shopify",
     "description": "",
+    "version": "2.0.4",
     "authors": [
       {
         "name": "Joox Shopify Wrapper",
         "email": "desen@joox.io"
-      }
-    ],
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "https://github.com/jooxcards/laravel-shopify-API-wrapper"
       }
     ],
     "require": {
@@ -23,5 +18,5 @@
         "RocketCode\\": "src/RocketCode"
       }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
