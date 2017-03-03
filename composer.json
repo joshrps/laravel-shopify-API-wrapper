@@ -1,7 +1,7 @@
 {
     "name": "joox/shopify",
     "description": "",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "authors": [
       {
         "name": "Joox Shopify Wrapper",
@@ -15,7 +15,7 @@
     "autoload": {
       "psr-4":
       {
-        "RocketCode\\": "src/RocketCode"
+        "Joox\\": "src/Joox"
       }
     },
     "minimum-stability": "dev"

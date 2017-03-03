@@ -4,20 +4,19 @@ Laravel / Shopify API Wrapper
 An easy-to-use PHP package to communicate with [Shopify's API](http://docs.shopify.com/api) in Laravel.
 
 ##Installation
-####Require rocket-code/shopify in `composer.json`
+####Require joox/shopify in `composer.json`
 
-Add `"rocket-code/shopify"` in your "require" object. With a blank Laravel install, it will look something like this:
+Add `"joox/shopify"` in your "require" object. With a blank Laravel install, it will look something like this:
 
-For Laravel 5, use `"rocket-code/shopify": "~2.0"`. For Laravel 4, use `"rocket-code/shopify": "~1.0"`.
+For Laravel 5, use `"joox/shopify": "~2.0"`.
 
 ```
 	"require": {
-		"laravel/framework": "4.2.*",
-		"rocket-code/shopify": "~1.0"
+		"joox/shopify": "~2.0"
 	}
 ```
 ####Add the Service Provider
-In `app/config/app.php`, add `RocketCode\Shopify\ShopifyServiceProvider` to the end of the `providers` array.
+In `app/config/app.php`, add `Joox\Shopify\ShopifyServiceProvider` to the end of the `providers` array.
 
 ##Setting Up
 To begin, use `App::make()` to grab an instance of the `API` class.
