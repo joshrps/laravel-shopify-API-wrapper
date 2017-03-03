@@ -1,14 +1,21 @@
 {
-    "name": "rocket-code/shopify",
+    "name": "joox/shopify",
     "description": "",
     "authors": [
-        {
-            "name": "Rocket Code",
-            "email": "josh@rocketcode.io"
-        }
+      {
+        "name": "Joox Shopify Wrapper",
+        "email": "desen@joox.io"
+      }
+    ],
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/jooxcards/laravel-shopify-API-wrapper"
+      }
     ],
     "require": {
-      "laravel/framework": "~5.0"
+      "laravel/framework": "~5.0",
+      "laravelcollective/html": "~5.0"
     },
     "autoload": {
       "psr-4":
