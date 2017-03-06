@@ -1,8 +1,8 @@
-<?php namespace RocketCode\Shopify;
+<?php namespace Joox\Shopify;
 
 /**
  * Class API
- * @package RocketCode\Shopify
+ * @package Joox\Shopify
  */
 class API
 {
@@ -246,7 +246,7 @@ class API
             CURLOPT_HTTPHEADER      => $headers,
             CURLOPT_CUSTOMREQUEST   => strtoupper($request['METHOD']),
             CURLOPT_ENCODING        => '',
-            CURLOPT_USERAGENT       => 'RocketCode Shopify API Wrapper',
+            CURLOPT_USERAGENT       => 'Joox Shopify API Wrapper',
             CURLOPT_FAILONERROR     => $request['FAILONERROR'],
             CURLOPT_VERBOSE         => $request['ALLDATA'],
             CURLOPT_HEADER          => 1

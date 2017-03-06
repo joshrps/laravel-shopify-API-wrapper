@@ -1,4 +1,4 @@
-<?php namespace RocketCode\Shopify;
+<?php namespace Joox\Shopify;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
@@ -28,7 +28,7 @@ class ShopifyServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        AliasLoader::getInstance()->alias('ShopifyAPI', 'RocketCode\Shopify\API');
+        AliasLoader::getInstance()->alias('ShopifyAPI', 'Joox\Shopify\API');
     }
 
 	/**
@@ -38,7 +38,7 @@ class ShopifyServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return ['ShopifyAPI', 'RocketCode\Shopify\API'];
+		return ['ShopifyAPI', 'Joox\Shopify\API'];
 	}
 
 }
