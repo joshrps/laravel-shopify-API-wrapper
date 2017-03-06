@@ -1,6 +1,8 @@
 Laravel / Shopify API Wrapper
 ===========================
 
+####This package is a fork of rocket-code/shopify.
+
 An easy-to-use PHP package to communicate with [Shopify's API](http://docs.shopify.com/api) in Laravel.
 
 ##Installation
