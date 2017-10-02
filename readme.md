@@ -3,12 +3,13 @@ Laravel / Shopify API Wrapper
 
 An easy-to-use PHP package to communicate with [Shopify's API](http://docs.shopify.com/api) in Laravel.
 
-##Installation
-####Require rocket-code/shopify in `composer.json`
+## Installation
+
+#### Require rocket-code/shopify in `composer.json`
 
 Add `"rocket-code/shopify"` in your "require" object. With a blank Laravel install, it will look something like this:
 
-For Laravel 5, use `"rocket-code/shopify": "~2.0"`. For Laravel 4, use `"rocket-code/shopify": "~1.0"`.
+For Laravel 5, use `"rocket-code/shopify":"~2.0"`. For Laravel 4, use `"rocket-code/shopify":"~1.0"`.
 
 ```
 	"require": {
@@ -16,23 +17,29 @@ For Laravel 5, use `"rocket-code/shopify": "~2.0"`. For Laravel 4, use `"rocket-
 		"rocket-code/shopify": "~1.0"
 	}
 ```
-####Add the Service Provider
+
+#### Add the Service Provider
+
 In `app/config/app.php`, add `RocketCode\Shopify\ShopifyServiceProvider` to the end of the `providers` array.
 
-##Setting Up
+## Setting Up
+
 To begin, use `App::make()` to grab an instance of the `API` class.
 
 ```
 $sh = App::make('ShopifyAPI');
 ```
 
-####Loading API Credentials
+#### Loading API Credentials
+
 Simply pass an array with the following keys (and filled-in values) to prepare. Not all values need to be passed at once; you can call the `setup()` method as many times as you'd like; it will only accept the following 4 keys, and overwrite a values if it's already set.
 
 ```
 $sh->setup(['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '', 'ACCESS_TOKEN' => '']);
 ```
-#####Shortcut:
+
+##### Shortcut:
+
 Pass the setup array as the second argument in `App::make()`:
 
 ```
@@ -41,7 +48,8 @@ $sh = App::make('ShopifyAPI', ['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN
 
 That's it! You're ready to make some API calls.
 
-##Finding the Install URL
+## Finding the Install URL
+
 After setting up with at least `SHOP_DOMAIN` & `API_KEY`, call `installURL()` with an array of permissions ([the app's Scope](docs.shopify.com/api/authentication/oauth#scopes)):
 
 ```
@@ -54,7 +62,8 @@ You may also pass a redirect URL per the `redirect_uri` parameter [as described 
 $sh->installURL(['permissions' => array('write_orders', 'write_products'), 'redirect' => 'http://myapp.com/success']);
 ```
 
-##Authentication / Getting OAuth Access Token
+## Authentication / Getting OAuth Access Token
+
 In order to make Authenticated requests, [the Access Token must be passed as a header in each request](http://docs.shopify.com/api/authentication/oauth#making-authenticated-requests). This package will automatically do that for you, but you must first authenticate your app on each store (as the user installs it), and save the Access Token.
 
 Once the user accesses the Install URL and clicks the Install button, they will be redirected back to your app with data in the Query String.
@@ -77,7 +86,8 @@ catch (Exception $e)
 // Save $accessToken
 ```
 
-####Verifying OAuth Data
+#### Verifying OAuth Data
+
 Shopify returns a hashed value to validate the data against. To validate (recommended before calling `getAccessToken()`), utilize `verifyRequest()`.
 
 ```
@@ -115,14 +125,16 @@ $verify = $sh->verifyRequest(Input::all(), TRUE);
 ## Private Apps
 The API Wrapper does not distinguish between private and public apps. In order to utilize it with a private app, set up everything as you normally would, replacing the OAuth Access Token with the private app's Password.
 
-##Calling the API
+## Calling the API
+
 Once set up, simply pass the data you need to the `call()` method.
 
 ```
 $result = $sh->call($args);
 ```
 
-####`call()` Parameters
+#### `call()` Parameters
+
 The parameters listed below allow you to set required values for an API call as well as override additional default values.
 
 * `METHOD`: The HTTP method to use for your API call. Different endpoints require different methods.
@@ -147,10 +159,12 @@ The parameters listed below allow you to set required values for an API call as 
   * Default: `TRUE`
 
 
-##Some Examples
+## Some Examples
+
 Assume that `$sh` has already been set up as documented above.
 
-####Listing Products
+#### Listing Products
+
 ```
 try
 {
@@ -170,7 +184,7 @@ echo '</pre>';
 
 `$call` will either contain a `stdClass` object with `products` or an Exception error message.
 
-####Creating a snippet from a Laravel View
+#### Creating a snippet from a Laravel View
 
 ```
 $testData = ['name' => 'Foo', 'location' => 'Bar'];
@@ -192,7 +206,8 @@ var_dump($call);
 echo '</pre>';
 ```
 
-####Performing operations on multiple shops
+#### Performing operations on multiple shops
+
 The `setup()` method makes changing the current shop simple.
 
 ```
