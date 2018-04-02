@@ -221,6 +221,7 @@ class API
 	    $defaultHeaders = array();
 	    $defaultHeaders[] = 'Content-Type: application/json; charset=' . $request['CHARSET'];
 	    $defaultHeaders[] = 'Accept: application/json';
+	    $defaultHeaders[] = 'Content-length: 0';
 	    if (array_key_exists('ACCESS_TOKEN', $this->_API))
 	    {
 		    $defaultHeaders[] = 'X-Shopify-Access-Token: ' . $this->_API['ACCESS_TOKEN'];
