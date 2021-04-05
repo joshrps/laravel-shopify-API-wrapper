@@ -1,5 +1,5 @@
 {
-    "name": "rocket-code/shopify",
+    "name": "printify/shopify",
     "description": "",
     "authors": [
         {
@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-      "laravel/framework": "~5.0"
+      "laravel/framework": "~6.0"
     },
     "autoload": {
       "psr-4":
