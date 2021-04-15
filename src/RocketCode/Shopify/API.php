@@ -29,52 +29,42 @@ class API
 	 * @throws \Exception
 	 */
 	public function verifyRequest($data = NULL, $bypassTimeCheck = FALSE)
-	{
-		$da = array();
-		if (is_string($data))
-		{
-			$each = explode('&', $data);
-			foreach($each as $e)
-			{
-				list($key, $val) = explode('=', $e);
-				$da[$key] = $val;
-			}
-		}
-		elseif (is_array($data))
-		{
-			$da = $data;
-		}
-		else
-		{
-			throw new \Exception('Data passed to verifyRequest() needs to be an array or URL-encoded string of key/value pairs.');
-		}
+    {
+        $da = array();
+        if (is_string($data)) {
+            $each = explode('&', $data);
+            foreach ($each as $e) {
+                list($key, $val) = explode('=', $e);
+                $da[$key] = $val;
+            }
+        } elseif (is_array($data)) {
+            $da = $data;
+        } else {
+            throw new \Exception('Data passed to verifyRequest() needs to be an array or URL-encoded string of key/value pairs.');
+        }
 
-		// Timestamp check; 1 hour tolerance
-		if (!$bypassTimeCheck)
-		{
-			if (($da['timestamp'] - time() > 3600))
-			{
-				throw new \Exception('Timestamp is greater than 1 hour old. To bypass this check, pass TRUE as the second argument to verifyRequest().');
-			}
-		}
+        // Timestamp check; 1 hour tolerance
+        if (!$bypassTimeCheck) {
+            if (($da['timestamp'] - time() > 3600)) {
+                throw new \Exception('Timestamp is greater than 1 hour old. To bypass this check, pass TRUE as the second argument to verifyRequest().');
+            }
+        }
 
-		if (array_key_exists('hmac', $da))
-		{
-			// HMAC Validation
-			$queryString = http_build_query(array('code' => $da['code'], 'shop' => $da['shop'], 'timestamp' => $da['timestamp']));
-			$match = $da['hmac'];
-			$calculated = hash_hmac('sha256', $queryString, $this->_API['API_SECRET']);
-		}
-		else
-		{
-			// MD5 Validation, to be removed June 1st, 2015
-			$queryString = http_build_query(array('code' => $da['code'], 'shop' => $da['shop'], 'timestamp' => $da['timestamp']), NULL, '');
-			$match = $da['signature'];
-			$calculated = md5($this->_API['API_SECRET'] . $queryString);
-		}
+        if (array_key_exists('hmac', $da)) {
+            // HMAC Validation
+            $match = $da['hmac'];
+            unset($da['hmac']);
+            $queryString = http_build_query($da);
+            $calculated = hash_hmac('sha256', $queryString, $this->_API['API_SECRET']);
+        } else {
+            // MD5 Validation, to be removed June 1st, 2015
+            $queryString = http_build_query(array('code' => $da['code'], 'shop' => $da['shop'], 'timestamp' => $da['timestamp']), NULL, '');
+            $match = $da['signature'];
+            $calculated = md5($this->_API['API_SECRET'] . $queryString);
+        }
 
-		return $calculated === $match;
-	}
+        return $calculated === $match;
+    }
 
 	/**
 	 * Calls API and returns OAuth Access Token, which will be needed for all future requests
